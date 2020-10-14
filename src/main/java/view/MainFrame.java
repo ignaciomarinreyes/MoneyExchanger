@@ -36,6 +36,8 @@ public class MainFrame extends javax.swing.JFrame {
         currencyFromComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         currencyTojComboBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,14 +66,25 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\jesus\\Documents\\NetBeansProjects\\MoneyExchanger\\icons\\flagEEUU.png")); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(40, 27));
+        jLabel1.setMinimumSize(new java.awt.Dimension(40, 27));
+        jLabel1.setPreferredSize(new java.awt.Dimension(40, 27));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\jesus\\Documents\\NetBeansProjects\\MoneyExchanger\\icons\\flagUE.png")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(21, 21, 21)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -86,9 +99,13 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel3)
-                .addGap(30, 30, 30)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2))
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fromAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(currencyFromComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -96,7 +113,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(toAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(currencyTojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,7 +124,7 @@ public class MainFrame extends javax.swing.JFrame {
         if (evt.getStateChange() == ItemEvent.SELECTED ){
             if (currencyFromComboBox.getSelectedItem().equals("EURO")) {
                 toAmountTextField.setText(String.valueOf(calculate(exchangeRateEurToDollar)));
-                currencyTojComboBox.setSelectedItem("DOLAR");
+                currencyTojComboBox.setSelectedItem("DOLLAR");
             }else{
                 toAmountTextField.setText(String.valueOf(calculate(exchangeRateDollarToEur)));
                 currencyTojComboBox.setSelectedItem("EURO");
@@ -119,7 +136,7 @@ public class MainFrame extends javax.swing.JFrame {
         if (evt.getStateChange() == ItemEvent.SELECTED ){
             if (currencyTojComboBox.getSelectedItem().equals("EURO")) {
                 toAmountTextField.setText(String.valueOf(calculate(exchangeRateDollarToEur)));
-                currencyFromComboBox.setSelectedItem("DOLAR");
+                currencyFromComboBox.setSelectedItem("DOLLAR");
             }else{
                 toAmountTextField.setText(String.valueOf(calculate(exchangeRateEurToDollar)));
                 currencyFromComboBox.setSelectedItem("EURO");
@@ -149,14 +166,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> currencyFromComboBox;
     private javax.swing.JComboBox<String> currencyTojComboBox;
     private javax.swing.JTextField fromAmountTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField toAmountTextField;
     // End of variables declaration//GEN-END:variables
 
     private void initCurrencyComboBox() {
         currencyFromComboBox.addItem("EURO");
-        currencyFromComboBox.addItem("DOLAR");
-        currencyTojComboBox.addItem("DOLAR");
+        currencyFromComboBox.addItem("DOLLAR");
+        currencyTojComboBox.addItem("DOLLAR");
         currencyTojComboBox.addItem("EURO");
     }
 

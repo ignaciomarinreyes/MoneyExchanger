@@ -5,7 +5,6 @@ import java.awt.event.ItemEvent;
 import model.Currency;
 import model.ExchangeRate;
 import rest.RestExchangeRateLoader;
-import java.lang.Math;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 

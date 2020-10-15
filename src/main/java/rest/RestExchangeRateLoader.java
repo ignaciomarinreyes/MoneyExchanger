@@ -19,12 +19,16 @@ public class RestExchangeRateLoader {
     }
 
     private double read(String from, String to) throws IOException {
-        URL url = new URL("https://free.currconv.com/api/v7/convert?q=" + from + "_" + to + "&compact=ultra&apiKey=e374ec108bbad0f57f78");
+        URL url = new URL("http://api.currencylayer.com/live?access_key=b15d18f004bb805785647b73d8b60a22");
         URLConnection connection = url.openConnection();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
             String line = reader.readLine();
-            String line1 = line.substring(line.indexOf(to) + 5, line.indexOf("}"));
-            return Double.parseDouble(line1);
+            String line1 = line.substring(line.indexOf("USDEUR")+8, line.indexOf("USDEUR")+16);
+            if (from.equals("USD")) {
+                return Double.parseDouble(line1);
+            }else{
+                return 1/Double.parseDouble(line1);
+            }
         }
     }
 
